@@ -36,7 +36,9 @@ router.get("/session", async (req,res) => {
 
 
 // req.body {username: "something", password: "somethingelse"}
+// api/farmers/login
 router.post("/login", async (req,res) => {
+  console.log(req.body)
   try {
     // try to find user with inputted username
     const foundFarmer = await Farmer.findOne({
@@ -57,6 +59,16 @@ router.post("/login", async (req,res) => {
         res.status(403).json({msg: "wrong password buddy"})
       }
     }
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+})
+
+router.delete('/logout', (req,res) => {
+  try {
+    req.session.destroy()
+    res.status(200).json({msg:"logged out successfully"})
   } catch (error) {
     console.log(error)
     res.status(500).json(error)

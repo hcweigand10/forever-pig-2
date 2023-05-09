@@ -14,8 +14,12 @@
     <ul>
       <li class="li-inline nav-item"><a href="/">Home</a></li>
       <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
+      {{#if userId}}
+      <li class="li-inline nav-item"><button id="logout-link">Logout</button></li>
+      <script src="js/logout.js"></script>
+      {{else}}
       <li class="li-inline nav-item"><a href="/login">Login</a></li>
-      <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
+      {{/if}}
     </ul>
   </nav>
   <header class="hero">
@@ -25,6 +29,7 @@
   <main>
     {{{body}}}
   </main>
+
 
 
 </body>

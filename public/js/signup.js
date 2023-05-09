@@ -1,12 +1,12 @@
 const form = document.querySelector("#login-form");
 const userType = document.querySelector("#user-type");
 
-const login = async (e) => {
+const signup = async (e) => {
   // check if farmer or customer
   e.preventDefault();
-  // farmer login
+  // farmer signup
   if (userType.checked) {
-    const response = await fetch("/api/farmers/login", {
+    const response = await fetch("/api/farmers", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -19,9 +19,9 @@ const login = async (e) => {
     } else {
       alert("wrong credentials buddy")
     }
-  // customer login
+  // customer signup
   } else {
-    const response = await fetch("/api/customers/login", {
+    const response = await fetch("/api/customers", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -37,4 +37,4 @@ const login = async (e) => {
   }
 };
 
-form.addEventListener("submit", login);
+form.addEventListener("submit", signup);
